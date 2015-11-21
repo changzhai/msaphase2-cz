@@ -8,7 +8,7 @@
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "http://handsondemo.azurewebsites.net/api/students",
+                url: "https://handsondemo.azurewebsites.net/api/students",
                 success: function (data) {
                     callback(data);
                 }

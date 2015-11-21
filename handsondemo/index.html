@@ -9,6 +9,7 @@
     <link href="Content/style.css" rel="stylesheet" />
     <script src="Scripts/StudentModule.js">
     </script><script src="Scripts/index.js"></script>
+    <script src="Scripts/facebooklogin.js"></script>
     <meta charset="utf-8" />
 
     <!-- insight code stuff -->
@@ -22,9 +23,9 @@
         window.appInsights=appInsights;
         appInsights.trackPageView();
     </script>
-
 </head>
 <body>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
     <table class="table table-striped spaced-table">
         <thead>
             <tr>
