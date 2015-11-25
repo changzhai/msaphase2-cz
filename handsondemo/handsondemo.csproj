@@ -160,7 +160,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="ApplicationInsights.config" />
+    <None Include="Properties\PublishProfiles\handsondemo - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\handsondemo - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\handsondemo - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\handsondemo - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="index.html" />

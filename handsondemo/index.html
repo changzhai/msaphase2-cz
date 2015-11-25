@@ -8,7 +8,8 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
     <script src="Scripts/StudentModule.js">
-    </script><script src="Scripts/index.js"></script>
+    </script>
+    <script src="Scripts/index.js"></script>
     <script src="Scripts/facebooklogin.js"></script>
     <meta charset="utf-8" />
 
@@ -25,20 +26,53 @@
     </script>
 </head>
 <body>
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-    <div id="status">   
-    </div>
-    <table class="table table-striped spaced-table">
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Enrollment Date</th>
-            </tr>
-        </thead>
-        <tbody id="studentList">
+    <div id="header"><h1>Contoso University</h1></div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+        <li><a data-toggle="tab" href="#students">Students</a></li>
+        <li><a data-toggle="tab" href="#courses">Courses</a></li>
+        <li><a data-toggle="tab" href="#enrollments">Enrollments</a></li>
+        <li><a data-toggle="tab" href="#submissions">Submissions</a></li>
+        <li><fb:login-button style="position:relative; top:10px;" scope="public_profile,email" onlogin="checkLoginState();" auto_logout_link="true" size="medium"></fb:login-button></li>
+    </ul>
 
-        </tbody>
-    </table>
+    <!--<div id="status"></div>-->
+
+    <div class="tab-content">
+        <!--Home Tab-->
+        <div id="home" class="tab-pane fade in active">
+            <h1 style="text-align:center">Home</h1>
+            <div>Home of Contoso University</div>
+        </div>
+
+        <!--Students Tab-->
+        <div id="students" class="tab-pane fade">
+            <table class="table table-striped spaced-table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Enrollment Date</th>
+                    </tr>
+                </thead>
+                <tbody id="studentList"></tbody>
+            </table>
+        </div>
+
+        <!--Courses Tab-->
+        <div id="courses" class="tab-pane fade">
+            <p>Courses and stuff</p>
+        </div>
+
+        <!--Enrollments Tab-->
+        <div id="enrollments" class="tab-pane fade">
+            <p>Enrollments and stuff</p>
+        </div>
+
+        <!--Submissions Tab-->
+        <div id="Submissions" class="tab-pane fade">
+            <p>Submissions and stuff</p>
+        </div>
+    </div>
 </body>
 </html>
