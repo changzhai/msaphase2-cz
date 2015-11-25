@@ -1,12 +1,12 @@
-﻿var StudentModule = (function () {
+﻿var CourseModule = (function () {
 
     return {
-        getStudents: function (callback) {
+        getCourses: function (callback) {
             $.ajax({
                 type: "GET",
                 dataType: "json",
                 // API url here
-                url: "https://handsondemo.azurewebsites.net/api/Students",
+                url: "https://handsondemo.azurewebsites.net/api/Courses",
                 success: function (data) {
                     console.log(data);
                     callback(data);
@@ -14,11 +14,11 @@
             });
         },
 
-        getStudentById: function (id, callback) {
+        getCourseById: function (id, callback) {
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "https://handsondemo.azurewebsites.net/api/Students/" + id,
+                url: "https://handsondemo.azurewebsites.net/api/Courses/" + id,
                 success: function (data) {
                     console.log(data);
                     callback(data);
@@ -27,11 +27,11 @@
 
         },
 
-        addStudent: function (student, callback) {
+        addCourse: function (course, callback) {
             $.ajax({
-                url: "https://handsondemo.azurewebsites.net/api/Students/",
+                url: "https://handsondemo.azurewebsites.net/api/Courses/",
                 type: "POST",
-                data: student,
+                data: course,
                 success: function (data, textStatus, jqXHR) {
                     callback();
                 }
@@ -39,22 +39,22 @@
 
         },
 
-        updateStudent: function (studentid, student, callback) {
+        updateCourse: function (courseid, course, callback) {
             $.ajax({
-                url: "https://handsondemo.azurewebsites.net/api/Students/" + studentid,
+                url: "https://handsondemo.azurewebsites.net/api/Courses/" + courseid,
                 type: "PUT",
-                data: student,
+                data: course,
                 success: function (data, textStatus, jqXHR) {
                     callback();
                 }
             });
         },
 
-        deleteStudent: function (studentid, callback) {
+        deleteCourse: function (courseid, callback) {
             $.ajax({
                 type: "DELETE",
                 dataType: "json",
-                url: "https://handsondemo.azurewebsites.net/api/Students/" + studentid,
+                url: "https://handsondemo.azurewebsites.net/api/Courses/" + courseid,
                 success: function (data) {
                     callback();
                 }

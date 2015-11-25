@@ -14,6 +14,12 @@
     padding:5px; 
 }
 
+#tab-body{
+    max-width:750px; 
+    margin:auto; 
+    background-color:#EEEEEE; 
+    padding:5px
+}
 
 body {
     padding-bottom: 20px;
@@ -26,12 +32,12 @@ body {
 }
 
 .spaced-table>tbody>tr>td{
-    padding: 20px;
+    padding: 10px;
 }
 
-/*select all the headings*/
+/*select all the table headings*/
 .spaced-table>thead>tr>th{
-    padding: 40px;
+    padding: 10px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

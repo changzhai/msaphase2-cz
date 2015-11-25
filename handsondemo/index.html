@@ -7,8 +7,8 @@
     <script src="Scripts/bootstrap.min.js"></script>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
-    <script src="Scripts/StudentModule.js">
-    </script>
+    <script src="Scripts/StudentModule.js"></script>
+    <script src="Scripts/CourseModule.js"></script>
     <script src="Scripts/index.js"></script>
     <script src="Scripts/facebooklogin.js"></script>
     <meta charset="utf-8" />
@@ -41,27 +41,42 @@
     <div class="tab-content">
         <!--Home Tab-->
         <div id="home" class="tab-pane fade in active">
-            <h1 style="text-align:center">Home</h1>
-            <div>Home of Contoso University</div>
+            <div id="tab-body">
+                <h1>Home</h1>
+                <div>Home of Contoso University</div>
+            </div>
         </div>
 
         <!--Students Tab-->
         <div id="students" class="tab-pane fade">
-            <table class="table table-striped spaced-table">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Enrollment Date</th>
-                    </tr>
-                </thead>
-                <tbody id="studentList"></tbody>
-            </table>
+            <div id="tab-body">
+                <table class="table table-striped spaced-table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Enrollment Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsList"></tbody>
+                </table>
+            </div>
         </div>
 
         <!--Courses Tab-->
         <div id="courses" class="tab-pane fade">
-            <p>Courses and stuff</p>
+            <div id="tab-body">
+                <table class="table table-striped spaced-table">
+                    <thead>
+                        <tr>
+                            <th>CourseID</th>
+                            <th>Course</th>
+                            <th>Credits</th>
+                        </tr>
+                    </thead>
+                    <tbody id="coursesList"></tbody>
+                </table>
+            </div>
         </div>
 
         <!--Enrollments Tab-->
