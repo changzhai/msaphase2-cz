@@ -28,6 +28,10 @@ function loadStudents() {
             enrollmentdatecol.innerHTML = studentsList[i].EnrollmentDate;
             row.appendChild(enrollmentdatecol);
 
+            var editcol = document.createElement("td");
+            editcol.innerHTML = '<button data-toggle="collapse" data-target="#edit'+i+'">Collapsible</button><div id="edit'+i+'" class="collapse">Lorem ipsum dolor text....</div>';
+            row.appendChild(editcol);
+
             // Append our rows to the table
             studentTable.appendChild(row);
         }
