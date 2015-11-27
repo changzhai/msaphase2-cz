@@ -18,7 +18,7 @@
     <script src="Scripts/studentPage.js"></script>
     <script src="Scripts/coursePage.js"></script>
     <script src="Scripts/submissionPage.js"></script>
-
+    <script src="Scripts/enrollmentPage.js"></script>
 
     <!--Tubular-->
     <script src="Scripts/jquery.tubular.1.0.js"></script>
@@ -129,8 +129,9 @@
 
                     <button data-toggle="collapse" data-target="#CreateEnrollment">Create New Enrollment</button>
                     <div id="CreateEnrollment" class="collapse">
-                        Course ID: <input type="text" id="enrollmentcourseid"><br />
-                        Student ID: <input type="text" id="enrollmentstudentid"><br />
+                        Course ID: <input type="number" id="enrollmentcourseid"><br />
+                        Student ID: <input type="number" id="enrollmentstudentid"><br />
+                        Course Credits: <input type="number" id="coursecredits"><br />
                         <button data-toggle="collapse" data-target="#CreateEnrollment" onclick="createEnrollmentButton()">Save</button>
                     </div>
 
