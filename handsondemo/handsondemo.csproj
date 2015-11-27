@@ -209,6 +209,7 @@
     <Content Include="Scripts\coursePage.js" />
     <Content Include="Scripts\editsavecancel.js" />
     <Content Include="Scripts\EnrollmentModule.js" />
+    <Content Include="Scripts\enrollmentPage.js" />
     <Content Include="Scripts\facebooklogin.js" />
     <Content Include="Scripts\FacebookModule.js" />
     <Content Include="Scripts\index.js" />

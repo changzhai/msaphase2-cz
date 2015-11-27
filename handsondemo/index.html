@@ -55,7 +55,7 @@
         <div id="home" class="tab-pane fade in active">
             <div id="tab-body" style="text-align:center">
                 <h1>Home</h1>
-                <div>Home of Contoso University</div>
+                <div>Alpha Test of the new Contoso University web app.</div>
             </div>
         </div>
 
@@ -110,6 +110,12 @@
         <!--Enrollments Tab-->
         <div id="enrollments" class="tab-pane fade">
             <div id="tab-body">
+                <button data-toggle="collapse" data-target="#CreateEnrollment">Create New Enrollment</button>
+                <div id="CreateEnrollment" class="collapse">
+                    Course ID: <input type="text" id="enrollmentcourseid"><br />
+                    Student ID: <input type="text" id="enrollmentstudentid" ><br />
+                    <button data-toggle="collapse" data-target="#CreateEnrollment" onclick="createEnrollmentButton()">Save</button>
+                </div>
                 <table class="table table-striped spaced-table">
                     <thead>
                         <tr>
@@ -149,7 +155,7 @@
         <!--Chat Tab-->
         <div id="chat" class="tab-pane fade">
             <div id="tab-body">
-                <div class="container">
+                <div class="container" style="padding:10px">
                     <input type="text" id="message" />
                     <input type="button" id="sendmessage" value="Send" />
                     <input type="hidden" id="displayname" />

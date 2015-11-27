@@ -119,7 +119,7 @@ function loadCourses() {
 
             var delcol = document.createElement("td");
             delcol.innerHTML = '<input type="button" onclick="deleteCourseButton(' + coursesList[i].CourseID + ')" value="Delete">';
-            delcol.id = "delstudent" + coursesList[i].CourseID;
+            delcol.id = "delcourse" + coursesList[i].CourseID;
             row.appendChild(delcol);
 
             // Append our rows to the table
@@ -165,6 +165,16 @@ function loadEnrollments() {
             var Gradecol = document.createElement("td");
             Gradecol.innerHTML = enrollmentsList[i].Grade;
             row.appendChild(Gradecol);
+
+            var enrollmentEdit = document.createElement("td");
+            enrollmentEdit.innerHTML = '<input class="enrollmentEdit" type="button" value="Edit" />';
+            enrollmentEdit.id = "enrollmentEditButton" + document.createElement("td");
+            row.appendChild(enrollmentEdit);
+
+            var delcol = document.createElement("td");
+            delcol.innerHTML = '<input type="button" onclick="deleteEnrollmentButton(' + enrollmentsList[i].EnrollmentID + ')" value="Delete">';
+            delcol.id = "delenrollment" + coursesList[i].EnrollmentID;
+            row.appendChild(delcol);
 
             // Append our rows to the table
             enrollmentsTable.appendChild(row);
