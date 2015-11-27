@@ -80,17 +80,20 @@ function loadCourses() {
     function setupCoursesTable(coursesList) {
         var courseTable = document.getElementById("coursesList");
         var courseIDList = document.getElementById("courseidList");
-        var masterlist = document.getElementById("masterCourseList");
-        masterlist = coursesList;
-
         var blankrow = document.createElement("option");
-        blankrow.innerHTML = ("NOT EMPTY");
+        blankrow.innerHTML = (" ");
         courseIDList.appendChild(blankrow);
 
         for (i = 0; i < coursesList.length; i++) {
 
             var row = document.createElement("tr");
             row.class = "RowToClick";
+
+            var titleCol = document.createElement("td");
+            titleCol.innerHTML = coursesList[i].Title;
+            titleCol.id = "courseTitle" + coursesList[i].CourseID;
+            titleCol.style.fontWeight = "bold";
+            row.appendChild(titleCol);
 
             var courseIDcol = document.createElement("td");
             courseIDcol.innerHTML = coursesList[i].CourseID;
@@ -101,11 +104,6 @@ function loadCourses() {
             currentcourseID.innerHTML = coursesList[i].Title;
             currentcourseID.value = coursesList[i].CourseID;
             courseIDList.appendChild(currentcourseID);
-
-            var titleCol = document.createElement("td");
-            titleCol.innerHTML = coursesList[i].Title;
-            titleCol.id = "courseTitle" + coursesList[i].CourseID;
-            row.appendChild(titleCol);
 
             var creditsCol = document.createElement("td");
             creditsCol.innerHTML = coursesList[i].Credits;
@@ -173,7 +171,7 @@ function loadEnrollments() {
 
             var delcol = document.createElement("td");
             delcol.innerHTML = '<input type="button" onclick="deleteEnrollmentButton(' + enrollmentsList[i].EnrollmentID + ')" value="Delete">';
-            delcol.id = "delenrollment" + coursesList[i].EnrollmentID;
+            delcol.id = "delenrollment" + enrollmentsList[i].EnrollmentID;
             row.appendChild(delcol);
 
             // Append our rows to the table

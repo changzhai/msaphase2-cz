@@ -46,7 +46,7 @@
         <li><a data-toggle="tab" href="#enrollments">Enrollments</a></li>
         <li><a data-toggle="tab" href="#submissions">Submissions</a></li>
         <li><a data-toggle="tab" href="#chat">Chat</a></li>
-        <li><fb:login-button style="position:relative; top:0px;" scope="public_profile,email" onlogin="checkLoginState();" auto_logout_link="true" size="medium"></fb:login-button></li>
+        <li><fb:login-button style="position:relative; top:0px; padding-left:20px" scope="public_profile,email" onlogin="checkLoginState();" auto_logout_link="true" size="medium"></fb:login-button></li>
     </ul>
 
     <!--<div id="status"></div>-->
@@ -61,21 +61,24 @@
 
         <!--Students Tab-->
         <div id="students" class="tab-pane fade">
-            <div id="tab-body">
-                <button data-toggle="collapse" data-target="#CreateStudent">Create New Student</button>
+            <div id="tab-body" style="width:100%;text-align:center">
+                <h2>Students</h2>
+
+                <button data-toggle="collapse" data-target="#CreateStudent" style="align-content:center">Create New Student</button>
                 <div id="CreateStudent" class="collapse">
                     First name: <input type="text" id="fname"><br />
                     Last name: <input type="text" id="lname"><br />
                     <button data-toggle="collapse" data-target="#CreateStudent" onclick="createStudentButton()">Save</button>
                 </div>
+
                 <table class="table table-striped spaced-table">
                     <thead>
                         <tr>
                             <!--<th style="width:50px">ID</th>-->
                             <th style="width:100px">First Name</th>
                             <th style="width:100px; text-align:left">Last Name</th>
-                            <th style="width:200px">Enrollment Date</th>
-                            <th>Edit</th>
+                            <th style="width:200px; padding-left:40px">Enrollment Date</th>
+                            <th style="padding-left:55px">Edit</th>
                         </tr>
                     </thead>
                     <!--id="studentsList"-->
@@ -86,7 +89,9 @@
 
         <!--Courses Tab-->
         <div id="courses" class="tab-pane fade">
-            <div id="tab-body">
+            <div id="tab-body" style="width:100%;text-align:center">
+                <h2>Courses</h2>
+
                 <button data-toggle="collapse" data-target="#CreateCourse">Create New Course</button>
                 <div id="CreateCourse" class="collapse">
                     Course Title: <input type="text" id="coursetitle"><br />
@@ -94,11 +99,12 @@
                     Number of Credits: <input type="number" id="coursecredits"><br />
                     <button data-toggle="collapse" data-target="#CreateCourse" onclick="createCourseButton()">Save</button>
                 </div>
+
                 <table class="table table-striped spaced-table">
                     <thead>
                         <tr>
-                            <th>CourseID</th>
                             <th>Course</th>
+                            <th>CourseID</th>
                             <th>Credits</th>
                         </tr>
                     </thead>
@@ -109,13 +115,16 @@
 
         <!--Enrollments Tab-->
         <div id="enrollments" class="tab-pane fade">
-            <div id="tab-body">
+            <div id="tab-body" style="width:100%;text-align:center">
+                <h2>Enrollments</h2>
+
                 <button data-toggle="collapse" data-target="#CreateEnrollment">Create New Enrollment</button>
                 <div id="CreateEnrollment" class="collapse">
                     Course ID: <input type="text" id="enrollmentcourseid"><br />
-                    Student ID: <input type="text" id="enrollmentstudentid" ><br />
+                    Student ID: <input type="text" id="enrollmentstudentid"><br />
                     <button data-toggle="collapse" data-target="#CreateEnrollment" onclick="createEnrollmentButton()">Save</button>
                 </div>
+
                 <table class="table table-striped spaced-table">
                     <thead>
                         <tr>
@@ -131,8 +140,8 @@
         </div>
         <!--Submissions Tab-->
         <div id="submissions" class="tab-pane fade">
-            <div id="tab-body">
-                <p>Submissions and stuff</p>
+            <div id="tab-body" style="width:100%;text-align:center">
+                <h2>Submissions</h2>
                 <select id="studentidList" onchange="getNewCourses()"></select>
                 <select id="tempcourseList"></select>
                 <select id="courseidList" style="display:none;"></select>
@@ -155,6 +164,7 @@
         <!--Chat Tab-->
         <div id="chat" class="tab-pane fade">
             <div id="tab-body">
+                <h2 style="text-align:center">Chat Room</h2>
                 <div class="container" style="padding:10px">
                     <input type="text" id="message" />
                     <input type="button" id="sendmessage" value="Send" />
@@ -200,9 +210,5 @@
             </div>
         </div>
     </div>
-
-    <div id="masterStudentList" style="display:none"></div>
-    <div id="masterCourseList" style="display:none"></div>
-    <div id="masterEnrollmentList" style="display:none"></div>
 </body>
 </html>

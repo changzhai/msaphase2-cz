@@ -15,12 +15,10 @@ function createStudentButton() {
     console.log(newStudent);
     StudentModule.addStudent(newStudent, function (returnedStudent) {
         console.log("added student");
-        returnStudent(returnedStudent);
     })
 
-    function returnStudent(returnedStudent) {
-        console.log(returnedStudent);
-    }
+    document.getElementById("lname").value = "";
+    document.getElementById("fname").value = "";
 
     reloadStudents();
 };
@@ -33,10 +31,7 @@ function deleteStudentButton(id) {
 };
 
 function reloadStudents() {
-    console.log("deleting students");
+    console.log("reloading students");
     $("#studentsList").html("");
-    console.log("studentslist = " + studentsList);
-    console.log("loading students again");
     loadStudents();
-    console.log("new studentsList = " + studentsList);
 }
