@@ -4,9 +4,11 @@
 <head>
     <title></title>
     <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/jquery-2.1.4.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
+
 
     <!--API and related scripts-->
     <script src="Scripts/StudentModule.js"></script>
@@ -16,6 +18,12 @@
     <script src="Scripts/studentPage.js"></script>
     <script src="Scripts/coursePage.js"></script>
     <script src="Scripts/submissionPage.js"></script>
+
+
+    <!--Tubular-->
+    <script src="Scripts/jquery.tubular.1.0.js"></script>
+    <!--Tubular-->
+
 
     <link href="Content/editsavecancel.css" rel="stylesheet" />
     <script src="Scripts/editsavecancel.js"></script>
@@ -38,175 +46,177 @@
 
 </head>
 <body>
-    <div id="header"><h1>Contoso University</h1></div>
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-        <li><a data-toggle="tab" href="#students">Students</a></li>
-        <li><a data-toggle="tab" href="#courses">Courses</a></li>
-        <li><a data-toggle="tab" href="#enrollments">Enrollments</a></li>
-        <li><a data-toggle="tab" href="#submissions">Submissions</a></li>
-        <li><a data-toggle="tab" href="#chat">Chat</a></li>
-        <li><fb:login-button style="position:relative; top:0px; padding-left:20px" scope="public_profile,email" onlogin="checkLoginState();" auto_logout_link="true" size="medium"></fb:login-button></li>
-    </ul>
+    <div id="fakeLoader">
+        <div id="header"><h1>Contoso University</h1></div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+            <li><a data-toggle="tab" href="#students">Students</a></li>
+            <li><a data-toggle="tab" href="#courses">Courses</a></li>
+            <li><a data-toggle="tab" href="#enrollments">Enrollments</a></li>
+            <li><a data-toggle="tab" href="#submissions">Submissions</a></li>
+            <li><a data-toggle="tab" href="#chat">Chat</a></li>
+            <li><fb:login-button style="position:relative; top:0px; padding-left:20px" scope="public_profile,email" onlogin="checkLoginState();" auto_logout_link="true" size="medium"></fb:login-button></li>
+        </ul>
 
-    <!--<div id="status"></div>-->
-    <div class="tab-content">
-        <!--Home Tab-->
-        <div id="home" class="tab-pane fade in active">
-            <div id="tab-body" style="text-align:center">
-                <h1>Home</h1>
-                <div>Alpha Test of the new Contoso University web app.</div>
-            </div>
-        </div>
-
-        <!--Students Tab-->
-        <div id="students" class="tab-pane fade">
-            <div id="tab-body" style="width:100%;text-align:center">
-                <h2>Students</h2>
-
-                <button data-toggle="collapse" data-target="#CreateStudent" style="align-content:center">Create New Student</button>
-                <div id="CreateStudent" class="collapse">
-                    First name: <input type="text" id="fname"><br />
-                    Last name: <input type="text" id="lname"><br />
-                    <button data-toggle="collapse" data-target="#CreateStudent" onclick="createStudentButton()">Save</button>
+        <!--<div id="status"></div>-->
+        <div class="tab-content">
+            <!--Home Tab-->
+            <div id="home" class="tab-pane fade in active">
+                <div id="tab-body" style="text-align:center">
+                    <h1>Home</h1>
+                    <div>Alpha Test of the new Contoso University web app.</div>
                 </div>
-
-                <table class="table table-striped spaced-table">
-                    <thead>
-                        <tr>
-                            <!--<th style="width:50px">ID</th>-->
-                            <th style="width:100px">First Name</th>
-                            <th style="width:100px; text-align:left">Last Name</th>
-                            <th style="width:200px; padding-left:40px">Enrollment Date</th>
-                            <th style="padding-left:55px">Edit</th>
-                        </tr>
-                    </thead>
-                    <!--id="studentsList"-->
-                    <tbody id="studentsList"></tbody>
-                </table>
             </div>
-        </div>
 
-        <!--Courses Tab-->
-        <div id="courses" class="tab-pane fade">
-            <div id="tab-body" style="width:100%;text-align:center">
-                <h2>Courses</h2>
+            <!--Students Tab-->
+            <div id="students" class="tab-pane fade">
+                <div id="tab-body" style="width:100%;text-align:center">
+                    <h2>Students</h2>
 
-                <button data-toggle="collapse" data-target="#CreateCourse">Create New Course</button>
-                <div id="CreateCourse" class="collapse">
-                    Course Title: <input type="text" id="coursetitle"><br />
-                    Course Description: <input type="text" id="coursedescription" style="align-content:center"><br />
-                    Number of Credits: <input type="number" id="coursecredits"><br />
-                    <button data-toggle="collapse" data-target="#CreateCourse" onclick="createCourseButton()">Save</button>
+                    <button data-toggle="collapse" data-target="#CreateStudent" style="align-content:center">Create New Student</button>
+                    <div id="CreateStudent" class="collapse">
+                        First name: <input type="text" id="fname"><br />
+                        Last name: <input type="text" id="lname"><br />
+                        <button data-toggle="collapse" data-target="#CreateStudent" onclick="createStudentButton()">Save</button>
+                    </div>
+
+                    <table class="table table-striped spaced-table">
+                        <thead>
+                            <tr>
+                                <!--<th style="width:50px">ID</th>-->
+                                <th style="width:100px">First Name</th>
+                                <th style="width:100px; text-align:left">Last Name</th>
+                                <th style="width:200px; padding-left:40px">Enrollment Date</th>
+                                <th style="padding-left:55px">Edit</th>
+                            </tr>
+                        </thead>
+                        <!--id="studentsList"-->
+                        <tbody id="studentsList"></tbody>
+                    </table>
                 </div>
-
-                <table class="table table-striped spaced-table">
-                    <thead>
-                        <tr>
-                            <th>Course</th>
-                            <th>CourseID</th>
-                            <th>Credits</th>
-                        </tr>
-                    </thead>
-                    <tbody id="coursesList"></tbody>
-                </table>
             </div>
-        </div>
 
-        <!--Enrollments Tab-->
-        <div id="enrollments" class="tab-pane fade">
-            <div id="tab-body" style="width:100%;text-align:center">
-                <h2>Enrollments</h2>
+            <!--Courses Tab-->
+            <div id="courses" class="tab-pane fade">
+                <div id="tab-body" style="width:100%;text-align:center">
+                    <h2>Courses</h2>
 
-                <button data-toggle="collapse" data-target="#CreateEnrollment">Create New Enrollment</button>
-                <div id="CreateEnrollment" class="collapse">
-                    Course ID: <input type="text" id="enrollmentcourseid"><br />
-                    Student ID: <input type="text" id="enrollmentstudentid"><br />
-                    <button data-toggle="collapse" data-target="#CreateEnrollment" onclick="createEnrollmentButton()">Save</button>
+                    <button data-toggle="collapse" data-target="#CreateCourse">Create New Course</button>
+                    <div id="CreateCourse" class="collapse">
+                        Course Title: <input type="text" id="coursetitle"><br />
+                        Course Description: <input type="text" id="coursedescription" style="align-content:center"><br />
+                        Number of Credits: <input type="number" id="coursecredits"><br />
+                        <button data-toggle="collapse" data-target="#CreateCourse" onclick="createCourseButton()">Save</button>
+                    </div>
+
+                    <table class="table table-striped spaced-table">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>CourseID</th>
+                                <th>Credits</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coursesList"></tbody>
+                    </table>
                 </div>
-
-                <table class="table table-striped spaced-table">
-                    <thead>
-                        <tr>
-                            <th>EnrollmentID</th>
-                            <th>CourseID</th>
-                            <th>StudentID</th>
-                            <th>Grade</th>
-                        </tr>
-                    </thead>
-                    <tbody id="enrollmentsList"></tbody>
-                </table>
             </div>
-        </div>
-        <!--Submissions Tab-->
-        <div id="submissions" class="tab-pane fade">
-            <div id="tab-body" style="width:100%;text-align:center">
-                <h2>Submissions</h2>
-                <select id="studentidList" onchange="getNewCourses()"></select>
-                <select id="tempcourseList"></select>
-                <select id="courseidList" style="display:none;"></select>
-                <input type="text" id="submission" />
-                <button onclick="submitLink()">Submit</button>
-                <table class="table table-striped spaced-table">
-                    <thead>
-                        <tr>
-                            <th>EnrollmentID</th>
-                            <th>StudentID</th>
-                            <th>CourseID</th>
-                            <th>Submission</th>
-                        </tr>
-                    </thead>
-                    <tbody id="submissionsList"></tbody>
-                </table>
-            </div>
-        </div>
 
-        <!--Chat Tab-->
-        <div id="chat" class="tab-pane fade">
-            <div id="tab-body">
-                <h2 style="text-align:center">Chat Room</h2>
-                <div class="container" style="padding:10px">
-                    <input type="text" id="message" />
-                    <input type="button" id="sendmessage" value="Send" />
-                    <input type="hidden" id="displayname" />
-                    <ul id="discussion"></ul>
+            <!--Enrollments Tab-->
+            <div id="enrollments" class="tab-pane fade">
+                <div id="tab-body" style="width:100%;text-align:center">
+                    <h2>Enrollments</h2>
+
+                    <button data-toggle="collapse" data-target="#CreateEnrollment">Create New Enrollment</button>
+                    <div id="CreateEnrollment" class="collapse">
+                        Course ID: <input type="text" id="enrollmentcourseid"><br />
+                        Student ID: <input type="text" id="enrollmentstudentid"><br />
+                        <button data-toggle="collapse" data-target="#CreateEnrollment" onclick="createEnrollmentButton()">Save</button>
+                    </div>
+
+                    <table class="table table-striped spaced-table">
+                        <thead>
+                            <tr>
+                                <th>EnrollmentID</th>
+                                <th>CourseID</th>
+                                <th>StudentID</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="enrollmentsList"></tbody>
+                    </table>
                 </div>
-                <!--Script references. -->
-                <!--Reference the jQuery library. -->
-                <script src="Scripts/jquery-2.1.4.min.js"></script>
-                <!--Reference the SignalR library. -->
-                <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
-                <!--Reference the autogenerated SignalR hub script. -->
-                <script src="signalr/hubs"></script>
-                <!--Add script to update the page and send messages.-->
-                <script type="text/javascript">
-                    $(function () {
-                        // Declare a proxy to reference the hub.
-                        var chat = $.connection.chatHub;
-                        // Create a function that the hub can call to broadcast messages.
-                        chat.client.broadcastMessage = function (name, message) {
-                            // Html encode display name and message.
-                            var encodedName = $('<div />').text(name).html();
-                            var encodedMsg = $('<div />').text(message).html();
-                            // Add the message to the page.
-                            $('#discussion').append('<li><strong>' + encodedName
-                                + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
-                        };
-                        //// Get the user name and store it to prepend to messages.
-                        //$('#displayname').val(prompt('Enter your name:', ''));
-                        //// Set initial focus to message input box.
-                        //$('#message').focus();
-                        // Start the connection.
-                        $.connection.hub.start().done(function () {
-                            $('#sendmessage').click(function () {
-                                // Call the Send method on the hub.
-                                chat.server.send($('#displayname').val(), $('#message').val());
-                                // Clear text box and reset focus for next comment.
-                                $('#message').val('').focus();
+            </div>
+            <!--Submissions Tab-->
+            <div id="submissions" class="tab-pane fade">
+                <div id="tab-body" style="width:100%;text-align:center">
+                    <h2>Submissions</h2>
+                    <select id="studentidList" onchange="getNewCourses()"></select>
+                    <select id="tempcourseList"></select>
+                    <select id="courseidList" style="display:none;"></select>
+                    <input type="text" id="submission" />
+                    <button onclick="submitLink()">Submit</button>
+                    <table class="table table-striped spaced-table">
+                        <thead>
+                            <tr>
+                                <th>EnrollmentID</th>
+                                <th>StudentID</th>
+                                <th>CourseID</th>
+                                <th>Submission</th>
+                            </tr>
+                        </thead>
+                        <tbody id="submissionsList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--Chat Tab-->
+            <div id="chat" class="tab-pane fade">
+                <div id="tab-body">
+                    <h2 style="text-align:center">Chat Room</h2>
+                    <div class="container" style="padding:10px">
+                        <input type="text" id="message" />
+                        <input type="button" id="sendmessage" value="Send" />
+                        <input type="hidden" id="displayname" />
+                        <ul id="discussion"></ul>
+                    </div>
+                    <!--Script references. -->
+                    <!--Reference the jQuery library. -->
+                    <script src="Scripts/jquery-2.1.4.min.js"></script>
+                    <!--Reference the SignalR library. -->
+                    <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
+                    <!--Reference the autogenerated SignalR hub script. -->
+                    <script src="signalr/hubs"></script>
+                    <!--Add script to update the page and send messages.-->
+                    <script type="text/javascript">
+                        $(function () {
+                            // Declare a proxy to reference the hub.
+                            var chat = $.connection.chatHub;
+                            // Create a function that the hub can call to broadcast messages.
+                            chat.client.broadcastMessage = function (name, message) {
+                                // Html encode display name and message.
+                                var encodedName = $('<div />').text(name).html();
+                                var encodedMsg = $('<div />').text(message).html();
+                                // Add the message to the page.
+                                $('#discussion').append('<li><strong>' + encodedName
+                                    + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
+                            };
+                            //// Get the user name and store it to prepend to messages.
+                            //$('#displayname').val(prompt('Enter your name:', ''));
+                            //// Set initial focus to message input box.
+                            //$('#message').focus();
+                            // Start the connection.
+                            $.connection.hub.start().done(function () {
+                                $('#sendmessage').click(function () {
+                                    // Call the Send method on the hub.
+                                    chat.server.send($('#displayname').val(), $('#message').val());
+                                    // Clear text box and reset focus for next comment.
+                                    $('#message').val('').focus();
+                                });
                             });
                         });
-                    });
-                </script>
+                    </script>
+                </div>
             </div>
         </div>
     </div>

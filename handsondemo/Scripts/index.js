@@ -6,6 +6,14 @@
     loadName();
 });
 
+//tubular plugin
+$('document').ready(function () {
+    $('#wrapper').tubular({ videoId: 'e4Is32W-ppk', start: 3 });
+    // f-UGhWj1xww cool sepia hd
+    // 49SKbS7Xwf4 beautiful barn sepia
+});
+
+
 function loadName() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function (response) {
