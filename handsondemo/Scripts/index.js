@@ -23,6 +23,9 @@ function loadStudents() {
     function setupStudentsTable(studentsList) {
         var studentTable = document.getElementById("studentsList");
         var studentIDList = document.getElementById("studentidList")
+        var masterlist = document.getElementById("masterStudentList");
+        masterlist = studentsList;
+
         var blankrow = document.createElement("option");
         blankrow.innerHTML = (" ");
         studentIDList.appendChild(blankrow);
@@ -77,6 +80,8 @@ function loadCourses() {
     function setupCoursesTable(coursesList) {
         var courseTable = document.getElementById("coursesList");
         var courseIDList = document.getElementById("courseidList");
+        var masterlist = document.getElementById("masterCourseList");
+        masterlist = coursesList;
 
         var blankrow = document.createElement("option");
         blankrow.innerHTML = ("NOT EMPTY");
@@ -138,6 +143,7 @@ function loadEnrollments() {
 
     function setupEnrollmentsTable(enrollmentsList) {
         var enrollmentsTable = document.getElementById("enrollmentsList");
+
         console.log(enrollmentsList);
 
         for (i = 0; i < enrollmentsList.length; i++) {

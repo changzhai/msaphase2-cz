@@ -16,8 +16,8 @@ namespace handsondemo.Models
         public int EnrollmentID { get; set; }
         public int CourseID { get; set; }
         public int StudentID { get; set; }
-
         public Grade? Grade { get; set; }
+        public virtual ICollection<String> Submissions { get; set; }
 
         [JsonIgnore]
         public virtual Course Course { get; set; }
