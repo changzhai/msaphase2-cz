@@ -3,7 +3,17 @@
     loadStudents();
     loadCourses();
     loadEnrollments();
+    loadName();
 });
+
+function loadName() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function (response) {
+        console.log('Successful login for: ' + response.name);
+        console.log("response.name = " + response.name);
+        document.getElementById('displayname').value = response.name;
+    });
+}
 
 function loadStudents() {
     StudentModule.getStudents(function (studentsList) {
@@ -13,6 +23,10 @@ function loadStudents() {
     function setupStudentsTable(studentsList) {
         var studentTable = document.getElementById("studentsList");
         var studentIDList = document.getElementById("studentidList")
+        var blankrow = document.createElement("option");
+        blankrow.innerHTML = (" ");
+        studentIDList.appendChild(blankrow);
+
         console.log(studentsList);
 
         for (i = 0; i < studentsList.length; i++) {
@@ -20,8 +34,7 @@ function loadStudents() {
 
             var studentnamecol = document.createElement("option");
             studentnamecol.innerHTML = studentsList[i].FirstName + " " + studentsList[i].LastName;
-            studentnamecol.value = studentsList[i].FirstName + " " + studentsList[i].LastName;
-            studentnamecol.ID = studentsList[i].ID;
+            studentnamecol.value = studentsList[i].ID;
             studentIDList.appendChild(studentnamecol);
 
             var firstnamecol = document.createElement("td");
@@ -41,11 +54,14 @@ function loadStudents() {
 
             var editcol = document.createElement("td");
             editcol.innerHTML =
-                '<input class="edit" type="button" value="Edit" />' +
-                '<input class="save" type="button" value="Save" />' +
-                '<input class="cancel" type="button" value="Cancel" />';
+                '<input class="studentEdit" type="button" value="Edit" />'
             editcol.id = "edit"+studentsList[i].ID;
             row.appendChild(editcol);
+
+            var delcol = document.createElement("td");
+            delcol.innerHTML = '<input type="button" onclick="deleteStudentButton('+studentsList[i].ID+')" value="Delete">';
+            delcol.id = "delstudent" + studentsList[i].ID;
+            row.appendChild(delcol);
 
             // Append our rows to the table
             studentTable.appendChild(row);
@@ -61,32 +77,56 @@ function loadCourses() {
     function setupCoursesTable(coursesList) {
         var courseTable = document.getElementById("coursesList");
         var courseIDList = document.getElementById("courseidList");
-        console.log(coursesList);
+
+        var blankrow = document.createElement("option");
+        blankrow.innerHTML = ("NOT EMPTY");
+        courseIDList.appendChild(blankrow);
 
         for (i = 0; i < coursesList.length; i++) {
 
             var row = document.createElement("tr");
+            row.class = "RowToClick";
 
             var courseIDcol = document.createElement("td");
             courseIDcol.innerHTML = coursesList[i].CourseID;
+            courseIDcol.id = "course"+coursesList[i].CourseID;
             row.appendChild(courseIDcol);
 
             var currentcourseID = document.createElement("option");
             currentcourseID.innerHTML = coursesList[i].Title;
-            currentcourseID.value = coursesList[i].Title;
-            currentcourseID.ID = coursesList[i].CourseID;
+            currentcourseID.value = coursesList[i].CourseID;
             courseIDList.appendChild(currentcourseID);
 
             var titleCol = document.createElement("td");
             titleCol.innerHTML = coursesList[i].Title;
+            titleCol.id = "courseTitle" + coursesList[i].CourseID;
             row.appendChild(titleCol);
 
             var creditsCol = document.createElement("td");
             creditsCol.innerHTML = coursesList[i].Credits;
+            creditsCol.id = "courseCredits" + coursesList[i].CourseID;
             row.appendChild(creditsCol);
+
+            var courseEdit = document.createElement("td");
+            courseEdit.innerHTML = '<input class="courseEdit" type="button" value="Edit" />';
+            courseEdit.id = "courseEditButton" + document.createElement("td");
+            row.appendChild(courseEdit);
+
+            var delcol = document.createElement("td");
+            delcol.innerHTML = '<input type="button" onclick="deleteCourseButton(' + coursesList[i].CourseID + ')" value="Delete">';
+            delcol.id = "delstudent" + coursesList[i].CourseID;
+            row.appendChild(delcol);
 
             // Append our rows to the table
             courseTable.appendChild(row);
+
+            var descriptionsrow = document.createElement("tr");
+
+            var courseDescription = document.createElement("td");
+            courseDescription.innerHTML = coursesList[i].Description;
+            descriptionsrow.appendChild(courseDescription);
+            descriptionsrow.id = "coursedescription" + coursesList[i].CourseID;
+            courseTable.appendChild(descriptionsrow);
         }
     }
 }
@@ -115,7 +155,6 @@ function loadEnrollments() {
             var StudentIDcol = document.createElement("td");
             StudentIDcol.innerHTML = enrollmentsList[i].StudentID;
             row.appendChild(StudentIDcol);
-
 
             var Gradecol = document.createElement("td");
             Gradecol.innerHTML = enrollmentsList[i].Grade;

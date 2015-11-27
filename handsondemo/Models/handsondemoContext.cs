@@ -56,13 +56,13 @@ namespace handsondemo.Models
 
                 var courses = new List<Course>
                 {
-                    new Course {CourseID = 1050, Title = "Chemistry",      Credits = 3, },
-                    new Course {CourseID = 4022, Title = "Microeconomics", Credits = 3, },
-                    new Course {CourseID = 4041, Title = "Macroeconomics", Credits = 3, },
-                    new Course {CourseID = 1045, Title = "Calculus",       Credits = 4, },
-                    new Course {CourseID = 3141, Title = "Trigonometry",   Credits = 4, },
-                    new Course {CourseID = 2021, Title = "Composition",    Credits = 3, },
-                    new Course {CourseID = 2042, Title = "Literature",     Credits = 4, }
+                    new Course {CourseID = 1050, Title = "Chemistry",      Credits = 3, Description = "The study of how the world works at the molecular level."},
+                    new Course {CourseID = 4022, Title = "Microeconomics", Credits = 3, Description = "Economics, but smaller", },
+                    new Course {CourseID = 4041, Title = "Macroeconomics", Credits = 3, Description = "Economics, but bigger", },
+                    new Course {CourseID = 1045, Title = "Calculus",       Credits = 4, Description = "The maths of how things change with respect to each other. Invented by Newton.", },
+                    new Course {CourseID = 3141, Title = "Trigonometry",   Credits = 4, Description = "The maths of angles", },
+                    new Course {CourseID = 2021, Title = "Composition",    Credits = 3, Description = "Composition. Music or art?", },
+                    new Course {CourseID = 2042, Title = "Literature",     Credits = 4, Description = "Shakespeare and co", }
                 };
                 courses.ForEach(s => context.Courses.AddOrUpdate(p => p.Title, s));
                 context.SaveChanges();

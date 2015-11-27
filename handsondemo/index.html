@@ -3,31 +3,37 @@
 <html>
 <head>
     <title></title>
-
     <script src="Scripts/jquery-2.1.4.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
+
+    <!--API and related scripts-->
     <script src="Scripts/StudentModule.js"></script>
     <script src="Scripts/CourseModule.js"></script>
     <script src="Scripts/EnrollmentModule.js"></script>
+    <script src="Scripts/FacebookModule.js"></script>
+    <script src="Scripts/studentPage.js"></script>
+    <script src="Scripts/coursePage.js"></script>
+    <script src="Scripts/submissionPage.js"></script>
+
     <link href="Content/editsavecancel.css" rel="stylesheet" />
     <script src="Scripts/editsavecancel.js"></script>
     <script src="Scripts/index.js"></script>
     <script src="Scripts/facebooklogin.js"></script>
-    <script src="Scripts/studentPage.js"></script>
+
     <meta charset="utf-8" />
 
     <!-- insight code stuff -->
     <script type="text/javascript">
-        //var appInsights=window.appInsights||function(config){
-        //    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t
-        //}({
-        //    instrumentationKey:"16ca10e7-dbb3-422c-93ed-1e347ef43383"
-        //});
+        var appInsights = window.appInsights || function (config) {
+            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t
+        }({
+            instrumentationKey: "16ca10e7-dbb3-422c-93ed-1e347ef43383"
+        });
 
-        //window.appInsights=appInsights;
-        //appInsights.trackPageView();
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
     </script>
 
 </head>
@@ -47,7 +53,7 @@
     <div class="tab-content">
         <!--Home Tab-->
         <div id="home" class="tab-pane fade in active">
-            <div id="tab-body">
+            <div id="tab-body" style="text-align:center">
                 <h1>Home</h1>
                 <div>Home of Contoso University</div>
             </div>
@@ -81,6 +87,13 @@
         <!--Courses Tab-->
         <div id="courses" class="tab-pane fade">
             <div id="tab-body">
+                <button data-toggle="collapse" data-target="#CreateCourse">Create New Course</button>
+                <div id="CreateCourse" class="collapse">
+                    Course Title: <input type="text" id="coursetitle"><br />
+                    Course Description: <input type="text" id="coursedescription" style="align-content:center"><br />
+                    Number of Credits: <input type="number" id="coursecredits"><br />
+                    <button data-toggle="collapse" data-target="#CreateCourse" onclick="createCourseButton()">Save</button>
+                </div>
                 <table class="table table-striped spaced-table">
                     <thead>
                         <tr>
@@ -114,7 +127,8 @@
         <div id="submissions" class="tab-pane fade">
             <div id="tab-body">
                 <p>Submissions and stuff</p>
-                <select id="studentidList"></select>
+                <select id="studentidList" onchange="getNewCourses()"></select>
+                <select id="tempcourseList"></select>
                 <select id="courseidList"></select>
             </div>
         </div>
@@ -149,10 +163,10 @@
                             $('#discussion').append('<li><strong>' + encodedName
                                 + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
                         };
-                        // Get the user name and store it to prepend to messages.
-                        $('#displayname').val(prompt('Enter your name:', ''));
-                        // Set initial focus to message input box.
-                        $('#message').focus();
+                        //// Get the user name and store it to prepend to messages.
+                        //$('#displayname').val(prompt('Enter your name:', ''));
+                        //// Set initial focus to message input box.
+                        //$('#message').focus();
                         // Start the connection.
                         $.connection.hub.start().done(function () {
                             $('#sendmessage').click(function () {
@@ -166,6 +180,5 @@
                 </script>
             </div>
         </div>
-    </div>
 </body>
 </html>

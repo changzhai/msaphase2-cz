@@ -1,10 +1,10 @@
-﻿document.getElementById("getstudentbutton").addEventListener("click", function(){
-    console.log("button pressed");
-    getstudentbyid();
-});
+﻿//document.getElementById("getstudentbutton").addEventListener("click", function(){
+//    console.log("button pressed");
+//    getstudentbyid();
+//});
 
 function createStudentButton() {
-    var currentDate = new Date().toString();
+    var currentDate = new Date().toUTCString();
     var lastname = document.getElementById("lname").value;
     var firstname = document.getElementById("fname").value;
     var newStudent = {
@@ -12,19 +12,31 @@ function createStudentButton() {
         FirstName: firstname,
         EnrollmentDate: currentDate
     }
-    StudentModule.addStudent(newStudent, function (callback) {
-        console.log("added student")
+    console.log(newStudent);
+    StudentModule.addStudent(newStudent, function (returnedStudent) {
+        console.log("added student");
+        returnStudent(returnedStudent);
+    })
+
+    function returnStudent(returnedStudent) {
+        console.log(returnedStudent);
+    }
+
+    reloadStudents();
+};
+
+function deleteStudentButton(id) {
+    StudentModule.deleteStudent(id, function (deletedStudent) {
+        console.log("deleted student");
+        reloadStudents();
     })
 };
 
-function getstudentbyid() {
-    console.log("getstudentbyid triggered");
-    var studentid = 11;
-    StudentModule.getStudentById(studentid, function (studentbyID) {
-        setupStudent(studentbyID);
-    })
-    function setupStudent(studentbyID) {
-        var GottenStudent = document.getElementById("studentbyID");
-        console.log(studentbyID);
-    }
-};
+function reloadStudents() {
+    console.log("deleting students");
+    $("#studentsList").html("");
+    console.log("studentslist = " + studentsList);
+    console.log("loading students again");
+    loadStudents();
+    console.log("new studentsList = " + studentsList);
+}
